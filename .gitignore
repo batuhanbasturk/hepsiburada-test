@@ -11,6 +11,9 @@ logs/
 reports/
 libs/*.jar
 
+### Credentials (bkz. config/credentials.example.json) ###
+src/test/resources/config/credentials.json
+
 ### IntelliJ IDEA ###
 .idea/modules.xml
 .idea/jarRepositories.xml

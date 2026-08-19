@@ -1,0 +1,22 @@
+[
+  { "key": "websiteURL", "value": "https://www.hepsiburada.com/" },
+  { "key": "SEARCH_INPUT", "value": "input[data-test-id='search-bar-input']", "type": "css" },
+  { "key": "ACCOUNT_INDICATOR", "value": "[data-test-id='account']", "type": "css" },
+  { "key": "LOGIN_LINK", "value": "login", "type": "id" },
+  { "key": "CART_LINK", "value": "a[href*='sepetim']", "type": "css" },
+  { "key": "TRENDING_SEARCHES_PANEL", "value": "[class*='trendingTerms']", "type": "css" },
+  { "key": "USERNAME_INPUT", "value": "txtUserName", "type": "id" },
+  { "key": "PASSWORD_INPUT", "value": "txtPassword", "type": "id" },
+  { "key": "LOGIN_BUTTON", "value": "btnLogin", "type": "id" },
+  { "key": "PRODUCT_CARDS", "value": "li[class*='productListContent'][id]", "type": "css" },
+  { "key": "PRODUCT_LINK", "value": "a[class*='productCardLink']", "type": "css" },
+  { "key": "PRODUCT_TITLE", "value": "h1", "type": "tag" },
+  { "key": "ADD_TO_CART_BUTTON", "value": "[data-test-id='addToCart']", "type": "css" },
+  { "key": "CART_ITEM_NAME", "value": "div[class*='product_name'] a", "type": "css" },
+  { "key": "CAPTURED_TITLE", "value": "capturedProductTitle" },
+  { "key": "CART_COUNT_BEFORE_ADD", "value": "cartCountBeforeAdd" },
+  { "key": "SEARCH_TERM", "value": "bilgisayar" },
+  { "key": "TARGET_ROW", "value": "2" },
+  { "key": "TARGET_PRODUCT_IN_ROW", "value": "1" },
+  { "key": "COLUMNS_PER_ROW", "value": "4" }
+]
