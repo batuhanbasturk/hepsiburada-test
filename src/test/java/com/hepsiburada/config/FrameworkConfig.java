@@ -6,10 +6,10 @@ public final class FrameworkConfig {
     }
 
     public static String baseUrl() {
-        return System.getProperty("hb.base.url", "https://www.hepsiburada.com");
+        return ElementRepository.value("websiteURL");
     }
 
     public static int explicitWaitSeconds() {
-        return Integer.parseInt(System.getProperty("hb.explicit.wait.seconds", "15"));
+        return Integer.parseInt(System.getProperty("hb.explicit.wait.seconds", "5"));
     }
 }
