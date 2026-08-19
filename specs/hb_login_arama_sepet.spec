@@ -5,8 +5,7 @@ Tags: login, search, cart
 ## Login, bilgisayar ara, ikinci satırdaki ilk ürünü sepete ekle ve sepette olduğunu doğrula
 
 * Hepsiburada anasayfasına git
-//* Giriş yap
-//* Kullanıcınınls giriş yaptığını doğrula
+* E-posta ve şifre ile giriş yap
 * Ürünü ara
 * Arama sonuçlarının geldiğini doğrula
 * İkinci satırdaki ilk ürüne tıkla

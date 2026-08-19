@@ -15,6 +15,7 @@ public class HomePage extends BasePage {
 
     private static final By SEARCH_INPUT = By.cssSelector("input[data-test-id='search-bar-input']");
     private static final By ACCOUNT_INDICATOR = By.cssSelector("[data-test-id='account']");
+    private static final By LOGIN_LINK = By.id("login");
     private static final By CART_LINK = By.cssSelector("a[href*='sepetim']");
     private static final By TRENDING_SEARCHES_PANEL = By.cssSelector("[class*='trendingTerms']");
 
@@ -50,9 +51,16 @@ public class HomePage extends BasePage {
         }
     }
 
-    public LoginPage goToLogin() {
+    public void clickAccountIndicator() {
         waitClickable(ACCOUNT_INDICATOR).click();
-        waitClickable(By.id("login")).click();
+    }
+
+    public boolean isLoginLinkVisible() {
+        return isVisible(LOGIN_LINK);
+    }
+
+    public LoginPage clickLoginLink() {
+        waitClickable(LOGIN_LINK).click();
         return new LoginPage(driver);
     }
 

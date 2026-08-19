@@ -12,9 +12,19 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    public HomePage login(String username, String password) {
-        waitVisible(USERNAME_INPUT).sendKeys(username);
+    public boolean isLoaded() {
+        return isVisible(USERNAME_INPUT);
+    }
+
+    public void enterEmail(String email) {
+        waitVisible(USERNAME_INPUT).sendKeys(email);
+    }
+
+    public void enterPassword(String password) {
         waitVisible(PASSWORD_INPUT).sendKeys(password);
+    }
+
+    public HomePage clickLoginButton() {
         waitClickable(LOGIN_BUTTON).click();
         return new HomePage(driver);
     }
