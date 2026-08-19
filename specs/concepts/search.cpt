@@ -2,5 +2,6 @@
 
 * <arama terim key> ürününü ara
 * "PRODUCT_CARDS" elementlerinin göründüğünü doğrula
-* <hedef satır key> nolu satırdaki <hedef ürün key> nolu ürüne tıklayıp başlığını "CAPTURED_TITLE" olarak kaydet
+* <hedef satır key> nolu satırdaki <hedef ürün key> nolu ürüne ait başlığı "CAPTURED_TITLE" olarak kaydet
+* <hedef satır key> nolu satırdaki <hedef ürün key> nolu ürüne tıkla
 * "PRODUCT_TITLE" elementinin metni "CAPTURED_TITLE" ile eşleştiğini doğrula

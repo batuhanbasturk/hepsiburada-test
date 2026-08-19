@@ -1,6 +1,7 @@
 # Ürünü sepete ekle ve sepette olduğunu doğrula
 
-* "ADD_TO_CART_BUTTON" elementine tıklayarak ürünü sepete ekle ve mevcut sayacı "CART_COUNT_BEFORE_ADD" olarak kaydet
+* "CART_LINK" elementinin sayacını "CART_COUNT_BEFORE_ADD" olarak kaydet
+* "ADD_TO_CART_BUTTON" elementine tıkla
 * "CART_LINK" elementinin sayacının "CART_COUNT_BEFORE_ADD" değerinden büyük olduğunu doğrula
 * "CART_LINK" elementine tıkla
 * "CART_ITEM_NAME" elementlerinden birinin metni "CAPTURED_TITLE" ile eşleştiğini doğrula

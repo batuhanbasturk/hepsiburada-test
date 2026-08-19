@@ -20,19 +20,26 @@ public class SearchSteps {
         new HomePage(DriverFactory.getDriver()).searchFor(ElementRepository.value(terimKey));
     }
 
-    @Step("<satırKey> nolu satırdaki <ürünKey> nolu ürüne tıklayıp başlığını <veri key> olarak kaydet")
-    public void clickProductAt(String satirKey, String urunKey, String dataKey) {
-        int targetRow = Integer.parseInt(ElementRepository.value(satirKey));
-        int targetProductInRow = Integer.parseInt(ElementRepository.value(urunKey));
-        SearchResultsPage resultsPage = new SearchResultsPage(DriverFactory.getDriver());
+    @Step("<satırKey> nolu satırdaki <ürünKey> nolu ürüne ait başlığı <veri key> olarak kaydet")
+    public void captureProductTitle(String satirKey, String urunKey, String dataKey) {
+        WebElement productLink = locateProduct(satirKey, urunKey);
+        ScenarioDataStore.put(ElementRepository.value(dataKey), productLink.getAttribute("title"));
+    }
 
-        WebElement productLink = resultsPage.locateProductAt(targetRow, targetProductInRow);
-        String expectedTitle = productLink.getAttribute("title");
-        ScenarioDataStore.put(ElementRepository.value(dataKey), expectedTitle);
+    @Step("<satırKey> nolu satırdaki <ürünKey> nolu ürüne tıkla")
+    public void clickProductAt(String satirKey, String urunKey) {
+        SearchResultsPage resultsPage = new SearchResultsPage(DriverFactory.getDriver());
+        WebElement productLink = locateProduct(satirKey, urunKey);
 
         Set<String> handlesBeforeClick = DriverFactory.currentWindowHandles();
         resultsPage.clickProduct(productLink);
         DriverFactory.switchToNewWindow(handlesBeforeClick);
+    }
+
+    private WebElement locateProduct(String satirKey, String urunKey) {
+        int targetRow = Integer.parseInt(ElementRepository.value(satirKey));
+        int targetProductInRow = Integer.parseInt(ElementRepository.value(urunKey));
+        return new SearchResultsPage(DriverFactory.getDriver()).locateProductAt(targetRow, targetProductInRow);
     }
 
     @Step("<key> elementinin metni <veri key> ile eşleştiğini doğrula")

@@ -4,7 +4,6 @@ import com.hepsiburada.config.ElementRepository;
 import com.hepsiburada.driver.DriverFactory;
 import com.hepsiburada.pages.CartPage;
 import com.hepsiburada.pages.HomePage;
-import com.hepsiburada.pages.ProductPage;
 import com.thoughtworks.gauge.Step;
 import com.thoughtworks.gauge.datastore.ScenarioDataStore;
 
@@ -12,12 +11,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CartSteps {
 
-    @Step("<key> elementine tıklayarak ürünü sepete ekle ve mevcut sayacı <veri key> olarak kaydet")
-    public void addToCart(String key, String dataKey) {
-        int countBefore = new HomePage(DriverFactory.getDriver()).counterValue("CART_LINK");
-        ScenarioDataStore.put(ElementRepository.value(dataKey), countBefore);
-
-        new ProductPage(DriverFactory.getDriver()).addToCart(key);
+    @Step("<key> elementinin sayacını <veri key> olarak kaydet")
+    public void captureCounter(String key, String dataKey) {
+        int count = new HomePage(DriverFactory.getDriver()).counterValue(key);
+        ScenarioDataStore.put(ElementRepository.value(dataKey), count);
     }
 
     // Sepete eklemede toast/snackbar yok; header'daki sayaç asenkron güncelleniyor,
@@ -28,7 +25,7 @@ public class CartSteps {
         int countAfter = new HomePage(DriverFactory.getDriver()).waitForCounterAbove(key, countBefore);
 
         assertThat(countAfter)
-            .as("Beklenen: '" + key + "' elementinin sayacı sepete ekleme sonrası artmalı")
+            .as("Beklenen: '" + key + "' elementinin sayacı artmalı")
             .isGreaterThan(countBefore);
     }
 
