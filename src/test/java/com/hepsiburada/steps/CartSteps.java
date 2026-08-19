@@ -1,5 +1,6 @@
 package com.hepsiburada.steps;
 
+import com.hepsiburada.config.ElementRepository;
 import com.hepsiburada.driver.DriverFactory;
 import com.hepsiburada.pages.CartPage;
 import com.hepsiburada.pages.HomePage;
@@ -11,38 +12,33 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CartSteps {
 
-    @Step("Ürünü sepete ekle")
-    public void addToCart() {
-        int countBefore = new HomePage(DriverFactory.getDriver()).cartCountAsInt();
-        ScenarioDataStore.put(ScenarioDataKeys.CART_COUNT_BEFORE_ADD, countBefore);
+    @Step("<key> elementine tıklayarak ürünü sepete ekle ve mevcut sayacı <veri key> olarak kaydet")
+    public void addToCart(String key, String dataKey) {
+        int countBefore = new HomePage(DriverFactory.getDriver()).counterValue("CART_LINK");
+        ScenarioDataStore.put(ElementRepository.value(dataKey), countBefore);
 
-        new ProductPage(DriverFactory.getDriver()).addToCart();
+        new ProductPage(DriverFactory.getDriver()).addToCart(key);
     }
 
     // Sepete eklemede toast/snackbar yok; header'daki sayaç asenkron güncelleniyor,
     // bu yüzden statik ">0" yerine önceki değerden büyük olana kadar bekliyoruz.
-    @Step("Sepete eklendiğini doğrula")
-    public void verifyAddedToCart() {
-        int countBefore = (int) ScenarioDataStore.get(ScenarioDataKeys.CART_COUNT_BEFORE_ADD);
-        int countAfter = new HomePage(DriverFactory.getDriver()).waitForCartCountAbove(countBefore);
+    @Step("<key> elementinin sayacının <veri key> değerinden büyük olduğunu doğrula")
+    public void verifyCounterIncreased(String key, String dataKey) {
+        int countBefore = (int) ScenarioDataStore.get(ElementRepository.value(dataKey));
+        int countAfter = new HomePage(DriverFactory.getDriver()).waitForCounterAbove(key, countBefore);
 
         assertThat(countAfter)
-            .as("Beklenen: sepet sayacı sepete ekleme sonrası artmalı")
+            .as("Beklenen: '" + key + "' elementinin sayacı sepete ekleme sonrası artmalı")
             .isGreaterThan(countBefore);
     }
 
-    @Step("Sepeti aç")
-    public void openCart() {
-        new HomePage(DriverFactory.getDriver()).openCart();
-    }
-
-    @Step("Sepette ürünün göründüğünü doğrula")
-    public void verifyProductInCart() {
-        String expectedTitle = (String) ScenarioDataStore.get(ScenarioDataKeys.CAPTURED_TITLE);
-        boolean present = new CartPage(DriverFactory.getDriver()).containsProduct(expectedTitle);
+    @Step("<key> elementlerinden birinin metni <veri key> ile eşleştiğini doğrula")
+    public void verifyAnyElementTextMatchesStoredValue(String key, String dataKey) {
+        String expectedTitle = (String) ScenarioDataStore.get(ElementRepository.value(dataKey));
+        boolean present = new CartPage(DriverFactory.getDriver()).containsProduct(key, expectedTitle);
 
         assertThat(present)
-            .as("Beklenen: sepette eklenen ürün görünmeli")
+            .as("Beklenen: '" + key + "' elementlerinden biri '" + dataKey + "' ile eşleşen ürünü göstermeli")
             .isTrue();
     }
 }
