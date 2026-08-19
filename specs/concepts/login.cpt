@@ -1,10 +1,10 @@
 # E-posta ve şifre ile giriş yap
 
-* Hesap göstergesine tıkla
-* Giriş yap butonunun göründüğünü doğrula
-* Giriş yap linkine tıkla
-* Giriş sayfasına yönlendiğini doğrula
-* E-posta adresini gir
-* Şifreyi gir
-* Giriş yap butonuna tıkla
-* Kullanıcının giriş yaptığını doğrula
+* "ACCOUNT_INDICATOR" elementine tıkla
+* "LOGIN_LINK" elementinin göründüğünü doğrula
+* "LOGIN_LINK" elementine tıkla
+* "USERNAME_INPUT" elementinin göründüğünü doğrula
+* "USERNAME_INPUT" alanına e-posta adresini gir
+* "PASSWORD_INPUT" alanına şifreyi gir
+* "LOGIN_BUTTON" elementine tıkla
+* "ACCOUNT_INDICATOR" elementinin metni "Giriş Yap" olmamalı

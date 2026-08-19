@@ -1,6 +1,6 @@
-# Ürünü ara ve ürün sayfasına git
+# <arama terim key> ürününü ara ve <hedef satır key> nolu satırdaki <hedef ürün key> nolu ürüne git
 
-* Ürünü ara
-* Arama sonuçlarının geldiğini doğrula
-* İkinci satırdaki ilk ürüne tıkla
-* Ürün sayfasına yönlendiğini doğrula
+* <arama terim key> ürününü ara
+* "PRODUCT_CARDS" elementlerinin göründüğünü doğrula
+* <hedef satır key> nolu satırdaki <hedef ürün key> nolu ürüne tıklayıp başlığını "CAPTURED_TITLE" olarak kaydet
+* "PRODUCT_TITLE" elementinin metni "CAPTURED_TITLE" ile eşleştiğini doğrula
