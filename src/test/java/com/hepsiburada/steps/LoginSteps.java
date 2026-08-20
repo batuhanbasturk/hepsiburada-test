@@ -8,11 +8,6 @@ import com.thoughtworks.gauge.Step;
 
 public class LoginSteps {
 
-    @Step("Hepsiburada anasayfasına git")
-    public void openHomePage() {
-        new HomePage(DriverFactory.getDriver()).open();
-    }
-
     @Step("<key> alanına e-posta adresini gir")
     public void enterEmail(String key) {
         new LoginPage(DriverFactory.getDriver()).enterText(key, ElementRepository.value("USERNAME"));

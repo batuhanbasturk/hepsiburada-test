@@ -15,9 +15,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class SearchSteps {
 
+    @Step("Arama kutusuna tıkla")
+    public void clickSearchInput() {
+        new HomePage(DriverFactory.getDriver()).clickSearchInput();
+    }
+
     @Step("<terimKey> ürününü ara")
     public void searchProduct(String terimKey) {
-        new HomePage(DriverFactory.getDriver()).searchFor(ElementRepository.value(terimKey));
+        new HomePage(DriverFactory.getDriver()).typeSearchTermAndSubmit(ElementRepository.value(terimKey));
     }
 
     @Step("<satırKey> nolu satırdaki <ürünKey> nolu ürüne ait başlığı <veri key> olarak kaydet")

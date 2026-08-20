@@ -1,54 +1,46 @@
 package com.hepsiburada.pages;
 
-import com.hepsiburada.config.FrameworkConfig;
+import com.hepsiburada.config.ElementRepository;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
+import java.util.List;
 
 public class HomePage extends BasePage {
-
-    // "Kabul Et" butonu <efilli-layout-dynamic> elementinin shadow DOM'u içinde
-    // (<template shadowrootmode="open">); normal By.id/cssSelector shadow root'u
-    // göremediği için bulunamıyordu, bu yüzden JS ile shadow root'a inip tıklıyoruz.
-    private static final String DISMISS_COOKIE_BANNER_SCRIPT =
-        "var host = document.querySelector('efilli-layout-dynamic');" +
-        "if (!host || !host.shadowRoot) return false;" +
-        "var btn = host.shadowRoot.getElementById('hb-accept-all');" +
-        "if (!btn) return false;" +
-        "btn.click();" +
-        "return true;";
 
     public HomePage(WebDriver driver) {
         super(driver);
     }
 
-    public void open() {
-        driver.get(FrameworkConfig.baseUrl());
-        dismissCookieBannerIfPresent();
-    }
-
     // Sayfa açılışında gelen "İzin Tercihlerinizi Özelleştirelim" çerez banner'ı
     // varsa Kabul Et'e tıkla, yoksa kısa sürede devam et.
-    private void dismissCookieBannerIfPresent() {
+    public void clickShadowElementIfPresent(String hostKey, String targetKey) {
         try {
-            new WebDriverWait(driver, Duration.ofSeconds(5)).until(d ->
-                (Boolean) ((JavascriptExecutor) d).executeScript(DISMISS_COOKIE_BANNER_SCRIPT));
+            WebElement target = wait.until(d -> {
+                List<WebElement> hosts = d.findElements(ElementRepository.locator(hostKey));
+                if (hosts.isEmpty()) {
+                    return null;
+                }
+                SearchContext shadowRoot = hosts.get(0).getShadowRoot();
+                List<WebElement> targets = shadowRoot.findElements(ElementRepository.locator(targetKey));
+                return targets.isEmpty() ? null : targets.get(0);
+            });
+            target.click();
         } catch (TimeoutException e) {
-            // banner görünmedi, devam
+            // element görünmedi, devam
         }
     }
 
-    // Tıkladıktan sonra açılan "Popüler aramalar" panelini bekleyip
-    // (bu, yeni/interaktif arama kutusunun hazır olduğunun somut işareti) öyle yazıyoruz.
-    public void searchFor(String term) {
+    public void clickSearchInput() {
         WebElement input = waitVisible("SEARCH_INPUT");
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", input);
-        waitVisible("TRENDING_SEARCHES_PANEL");
+    }
+
+    public void typeSearchTermAndSubmit(String term) {
         WebElement readyInput = waitVisible("SEARCH_INPUT");
         readyInput.clear();
         readyInput.sendKeys(term);

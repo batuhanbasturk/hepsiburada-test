@@ -5,6 +5,8 @@
   { "key": "LOGIN_LINK", "value": "login", "type": "id" },
   { "key": "CART_LINK", "value": "a[href*='sepetim']", "type": "css" },
   { "key": "TRENDING_SEARCHES_PANEL", "value": "[class*='trendingTerms']", "type": "css" },
+  { "key": "COOKIE_BANNER_HOST", "value": "efilli-layout-dynamic", "type": "css" },
+  { "key": "COOKIE_BANNER_ACCEPT_BUTTON", "value": "hb-accept-all", "type": "id" },
   { "key": "USERNAME_INPUT", "value": "txtUserName", "type": "id" },
   { "key": "PASSWORD_INPUT", "value": "txtPassword", "type": "id" },
   { "key": "LOGIN_BUTTON", "value": "btnLogin", "type": "id" },

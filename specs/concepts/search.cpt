@@ -1,5 +1,7 @@
 # <arama terim key> ürününü ara ve <hedef satır key> nolu satırdaki <hedef ürün key> nolu ürüne git
 
+* Arama kutusuna tıkla
+* "TRENDING_SEARCHES_PANEL" elementinin göründüğünü doğrula
 * <arama terim key> ürününü ara
 * "PRODUCT_CARDS" elementlerinin göründüğünü doğrula
 * <hedef satır key> nolu satırdaki <hedef ürün key> nolu ürüne ait başlığı "CAPTURED_TITLE" olarak kaydet

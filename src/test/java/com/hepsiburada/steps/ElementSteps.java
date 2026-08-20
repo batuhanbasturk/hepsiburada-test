@@ -1,5 +1,6 @@
 package com.hepsiburada.steps;
 
+import com.hepsiburada.config.ElementRepository;
 import com.hepsiburada.driver.DriverFactory;
 import com.hepsiburada.pages.HomePage;
 import com.thoughtworks.gauge.Step;
@@ -10,6 +11,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 // Bu step'ler login/search/cart concept'lerinin hepsinden aynı metinle, farklı key
 // parametreleriyle çağrılabiliyor; yeni bir element için yeni step yazmaya gerek kalmıyor.
 public class ElementSteps {
+
+    @Step("<key> adresine git")
+    public void navigateTo(String key) {
+        DriverFactory.getDriver().get(ElementRepository.value(key));
+    }
+
+    @Step("<hostKey> içindeki <targetKey> elementine varsa tıkla")
+    public void clickShadowElementIfPresent(String hostKey, String targetKey) {
+        new HomePage(DriverFactory.getDriver()).clickShadowElementIfPresent(hostKey, targetKey);
+    }
 
     @Step("<key> elementine tıkla")
     public void clickElement(String key) {
