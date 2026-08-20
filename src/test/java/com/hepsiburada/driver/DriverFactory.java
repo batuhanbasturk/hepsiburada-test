@@ -1,6 +1,6 @@
 package com.hepsiburada.driver;
 
-import com.hepsiburada.config.FrameworkConfig;
+import com.hepsiburada.config.ElementRepository;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -54,7 +54,7 @@ public class DriverFactory {
     // çağıran taraf tıklamadan önce currentWindowHandles() alıp burada yeni sekmeyi bulur.
     public static void switchToNewWindow(Set<String> handlesBeforeAction) {
         WebDriver driver = getDriver();
-        new WebDriverWait(driver, Duration.ofSeconds(FrameworkConfig.explicitWaitSeconds()))
+        new WebDriverWait(driver, Duration.ofSeconds(Integer.parseInt(ElementRepository.value("EXPLICIT_WAIT_SECONDS"))))
             .until(ExpectedConditions.numberOfWindowsToBe(handlesBeforeAction.size() + 1));
 
         Set<String> handlesAfter = driver.getWindowHandles();

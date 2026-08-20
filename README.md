@@ -68,9 +68,9 @@ gauge run --tags "cart" specs
 ├── src/test/java/com/hepsiburada/
 │   ├── config/
 │   │   ├── ElementDefinition.java      JSON'daki {key, value, type} kaydının Java karşılığı
-│   │   ├── ElementRepository.java      elements.json + credentials.json'u okuyup key'den
-│   │   │                               Selenium By/locator ya da düz değer üreten repository
-│   │   └── FrameworkConfig.java        websiteURL, bekleme süresi gibi genel ayarlar
+│   │   └── ElementRepository.java      elements.json + credentials.json'u okuyup key'den
+│   │                                   Selenium By/locator ya da düz değer üreten repository
+│   │                                   (websiteURL, bekleme süresi gibi genel ayarlar da burada)
 │   │
 │   ├── driver/
 │   │   └── DriverFactory.java          ChromeDriver oluşturma/kapatma, sekme geçişi

@@ -1,5 +1,6 @@
 [
   { "key": "websiteURL", "value": "https://www.hepsiburada.com/" },
+  { "key": "EXPLICIT_WAIT_SECONDS", "value": "5" },
   { "key": "SEARCH_INPUT", "value": "input[data-test-id='search-bar-input']", "type": "css" },
   { "key": "ACCOUNT_INDICATOR", "value": "[data-test-id='account']", "type": "css" },
   { "key": "LOGIN_LINK", "value": "login", "type": "id" },

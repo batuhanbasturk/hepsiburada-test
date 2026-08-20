@@ -1,7 +1,6 @@
 package com.hepsiburada.pages;
 
 import com.hepsiburada.config.ElementRepository;
-import com.hepsiburada.config.FrameworkConfig;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -19,7 +18,7 @@ public abstract class BasePage {
 
     protected BasePage(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(FrameworkConfig.explicitWaitSeconds()));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(Integer.parseInt(ElementRepository.value("EXPLICIT_WAIT_SECONDS"))));
     }
 
     protected WebElement waitVisible(By locator) {
