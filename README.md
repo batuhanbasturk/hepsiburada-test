@@ -57,13 +57,12 @@ gauge run --tags "cart" specs
 
 ```
 ├── specs/
-│   ├── hb_login_arama_sepet.spec       Uçtan uca senaryo: login → arama → sepete ekleme
+│   ├── hb_login_arama_sepet.spec       Uçtan uca senaryo: anasayfayı aç → login → arama → sepete ekleme
 │   └── concepts/
+│       ├── home.cpt                    Anasayfayı açma ve çerez bildirimini kapatma concept'i
 │       ├── login.cpt                   "E-posta ve şifre ile giriş yap" concept'i
 │       ├── search.cpt                  Ürün arama ve ürün sayfasına gitme concept'i
 │       └── cart.cpt                    Sepete ekleme ve doğrulama concept'i
-│
-├── src/main/java/                      Gauge'un beklediği boş Main sınıfı (proje iskeleti)
 │
 ├── src/test/java/com/hepsiburada/
 │   ├── config/
@@ -88,7 +87,8 @@ gauge run --tags "cart" specs
 │   │   └── CartPage.java               Sepetteki ürünleri kontrol etme
 │   │
 │   └── steps/                          Gauge step tanımları (.spec/.cpt dosyalarındaki adımlar)
-│       ├── ElementSteps.java           Genel, key parametreli step'ler (tıkla, görünürlük doğrula)
+│       ├── ElementSteps.java           Genel, key parametreli step'ler (tıkla, görünürlük doğrula,
+│       │                               adrese git, shadow DOM elementine varsa tıkla)
 │       ├── LoginSteps.java             E-posta/şifre girme step'leri
 │       ├── SearchSteps.java            Arama, ürün seçme, başlık doğrulama step'leri
 │       └── CartSteps.java              Sepet sayacı/ürün doğrulama step'leri

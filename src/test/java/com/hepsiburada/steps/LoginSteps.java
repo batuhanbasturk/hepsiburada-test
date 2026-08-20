@@ -2,7 +2,6 @@ package com.hepsiburada.steps;
 
 import com.hepsiburada.config.ElementRepository;
 import com.hepsiburada.driver.DriverFactory;
-import com.hepsiburada.pages.HomePage;
 import com.hepsiburada.pages.LoginPage;
 import com.thoughtworks.gauge.Step;
 
